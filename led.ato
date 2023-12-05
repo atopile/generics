@@ -2,3 +2,28 @@ component LED:
     signal anode ~ pin 1
     signal cathode ~ pin 2
     designator_prefix = "LED"
+    forward_voltage = 2.0
+    max_current = "20mA"
+
+component BlueLED from LED:
+    forward_voltage = 3.0
+
+component RedLED from LED:
+    forward_voltage = 1.8
+
+component GreenLED from LED:
+    forward_voltage = 2.2
+
+import Resistor from "resistor.ato"
+module LEDIndicator:
+    led = new LED
+    resistor = new Resistor
+    signal input
+    signal gnd
+
+    input ~ led.anode; led.cathode ~ resistor.p1; resistor.p2 ~ gnd
+
+    # Equations:
+    # var brighness = 0.5
+    # input.voltage parameter is needed to calculate the resistor value
+    # resistor.resistance = ((input.voltage - led.forward_voltage) / led.max_current) * brighness
