@@ -1,0 +1,27 @@
+import Power from "interfaces.ato"
+
+module Regulator:
+    power_in = new Power
+    power_out = new Power
+
+import Vdiv from "StandardCircuits.ato"
+module AdjustableRegulator from regulator:
+    feedback_div = new Vdiv
+
+module Buck from AdjustableRegulator:
+    # regulator parameters
+
+module Boost from AdjustableRegulator:
+    # regulator parameters
+
+module FixedLDO from regulator:
+    # regulator parameters
+
+module AdjustableLDO from AdjustableRegulator:
+    # regulator parameters
+
+module Flyback from AdjustableRegulator:
+    # regulator parameters
+
+module Forward from AdjustableRegulator:
+    # regulator parameters
