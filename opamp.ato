@@ -6,7 +6,7 @@ component Opamp:
     designator_prefix = "U"
 
 import Power from "interfaces.ato"
-module buffer:
+module Buffer:
     power = new Power
     opamp = new Opamp
 
@@ -20,7 +20,7 @@ module buffer:
     output ~ opamp.output
 
 import vdiv from "StandardCircuits.ato"
-module amplifier:
+module Amplifier:
     power = new Power
     opamp = new Opamp
     vdiv = new Vdiv
@@ -41,3 +41,18 @@ module amplifier:
     output ~ vdiv.gnd
 
     inverting_input ~ power.gnd
+
+module InvertingAmplifier:
+    power = new Power
+    opamp = new Opamp
+
+    power ~ opamp.power
+
+    signal input
+    signal output
+
+    input ~ opamp.inverting_input
+    output ~ opamp.output
+    opamp.noninverting_input ~ power.gnd
+
+
