@@ -1,0 +1,8 @@
+component Resistor:
+    signal p1 ~ pin 1
+    signal p2 ~ pin 2
+    designator_prefix = "R"
+
+    # Equations
+    # R = V/I
+    # R = V^2/P

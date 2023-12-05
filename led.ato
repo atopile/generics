@@ -1,0 +1,4 @@
+component LED:
+    signal anode ~ pin 1
+    signal cathode ~ pin 2
+    designator_prefix = "LED"

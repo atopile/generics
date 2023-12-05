@@ -1,0 +1,43 @@
+component Opamp:
+    power = new Power
+    signal inverting_input
+    signal noninverting_input
+    signal output
+    designator_prefix = "U"
+
+import Power from "interfaces.ato"
+module buffer:
+    power = new Power
+    opamp = new Opamp
+
+    power ~ opamp.power
+
+    signal input
+    signal output
+
+    input ~ opamp.noninverting_input
+    output ~ opamp.inverting_input
+    output ~ opamp.output
+
+import vdiv from "StandardCircuits.ato"
+module amplifier:
+    power = new Power
+    opamp = new Opamp
+    vdiv = new Vdiv
+
+    power ~ opamp.power
+
+    # TODO: add equation for gain
+    gain = unknown
+    vdiv.r_top.value = unknown
+    vdiv.r_bottom.value = unknown
+
+    signal input
+    signal output
+
+    input ~ vdiv.input
+    vdiv.output ~ opamp.inverting_input
+    output ~ opamp.output
+    output ~ vdiv.gnd
+
+    inverting_input ~ power.gnd

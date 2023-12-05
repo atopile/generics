@@ -1,0 +1,10 @@
+component Diode:
+    signal anode ~ pin 1
+    signal cathode ~ pin 2
+    designator_prefix = "D"
+
+component ZenerDiode from Diode:
+    designator_prefix = "DZ"
+
+component ShottkyDiode from Diode:
+    designator_prefix = "DS"
