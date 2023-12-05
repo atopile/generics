@@ -1,0 +1,11 @@
+component Mosfet_nchannel:
+    signal gate
+    signal drain
+    signal source
+    designator_prefix = "Q"
+
+component Mosfet_pchannel:
+    signal gate
+    signal drain
+    signal source
+    designator_prefix = "Q"
