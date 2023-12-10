@@ -1,6 +1,6 @@
 component Diode:
-    signal anode ~ pin 1
-    signal cathode ~ pin 2
+    signal anode
+    signal cathode
     designator_prefix = "D"
 
 component ZenerDiode from Diode:
