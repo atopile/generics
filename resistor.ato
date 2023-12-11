@@ -2,6 +2,7 @@ component Resistor:
     signal p1 ~ pin 1
     signal p2 ~ pin 2
     designator_prefix = "R"
+    mpn = "generic_capacitor"
 
     # Equations
     # R = V/I
