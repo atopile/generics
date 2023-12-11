@@ -1,0 +1,17 @@
+import Resistor from "resistor.ato"
+import Power from "interfaces.ato"
+
+module VDiv:
+    signal top
+    signal out
+    signal bottom
+
+    in = new Power
+    in.vcc ~ top
+    in.gnd ~ bottom
+
+    r_top = new Resistor
+    r_bottom = new Resistor
+
+    top ~ r_top.1; r_top.2 ~ r_bottom.1; r_bottom.2 ~ bottom
+    r_top.2 ~ out
