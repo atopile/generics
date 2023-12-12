@@ -28,7 +28,7 @@ module Amplifier:
     power ~ opamp.power
 
     # TODO: add equation for gain
-    gain = unknown
+    gain = unknown\
     vdiv.r_top.value = unknown
     vdiv.r_bottom.value = unknown
 
