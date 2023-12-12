@@ -1,0 +1,8 @@
+component Blue_light_0603:
+    # component Blue light 0603
+    footprint = "LED0603-RD"
+    lcsc_id = "C2288"
+    # pins
+    signal K ~ pin 1
+    signal A ~ pin 2
+

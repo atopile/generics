@@ -1,29 +1,41 @@
+import Resistor from "resistor.ato"
+import Power from "interfaces.ato"
+import KT_0603R from "elec/src/KT-0603R.ato"
+import KT_0603G from "elec/src/KT-0603G.ato"
+import KT_0603B from "elec/src/KT-0603B.ato"
+
 component LED:
     signal anode ~ pin 1
     signal cathode ~ pin 2
     designator_prefix = "LED"
-    forward_voltage = 2.0
     max_current = "20mA"
 
-component BlueLED from LED:
-    forward_voltage = 3.0
-
-component RedLED from LED:
-    forward_voltage = 1.8
-
-component GreenLED from LED:
-    forward_voltage = 2.2
-
-import Resistor from "resistor.ato"
 module LEDIndicator:
-    led = new LED
-    resistor = new Resistor
+    power = new Power
     signal input
     signal gnd
+    resistor = new Resistor
+    led = new LED
 
+    resistor.footprint = "R0402"
+
+    # Connect up
     input ~ led.anode; led.cathode ~ resistor.p1; resistor.p2 ~ gnd
 
-    # Equations:
-    # var brighness = 0.5
-    # input.voltage parameter is needed to calculate the resistor value
-    # resistor.resistance = ((input.voltage - led.forward_voltage) / led.max_current) * brighness
+module LEDIndicatorRed from LEDIndicator:
+    led -> KT_0603R
+
+    #Assuming 3.3v input, 2V forward voltage, 5mA current
+    resistor.value = "270"
+
+module LEDIndicatorGreen from LEDIndicator:
+    led -> KT_0603G
+
+    #Assuming 3.3v input, 2.75V forward voltage, 5mA current
+    resistor.value = "110"
+
+module LEDIndicatorBlue from LEDIndicator:
+    led -> KT_0603B
+
+    #Assuming 3.3v input, 2.9V forward voltage, 5mA current
+    resistor.value = "82"
