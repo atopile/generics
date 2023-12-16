@@ -3,6 +3,7 @@
 ## Overview
 
 Standard libaries for use in your projects. These include:
+
 - **Resistors**
 - **Capacitors**
 - **Inductors**
@@ -12,6 +13,7 @@ Standard libaries for use in your projects. These include:
 
 ## Installation
 Run in the terminal:
+
 ```ato install generics``
 
 Add to your ato project:
@@ -48,6 +50,7 @@ We strongly reccomend using subclassing for new components, something like this:
 ```    footprint = "L0402" ```
 
 Then you can use it in your project like this:
+
 ```import MyInductor from "myInductor.ato"```
 ```myInductor = new MyInductor```
 ```myInductor.value = 1000```
