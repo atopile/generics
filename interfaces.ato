@@ -65,3 +65,11 @@ interface BLDC_3PWM:
 interface DiffPair:
     signal p
     signal n
+
+interface Load:
+    signal p
+    signal n
+
+interface Pair:
+    signal io
+    signal gnd
