@@ -61,3 +61,7 @@ interface BLDC_3PWM:
     signal phase_b
     signal phase_c
     signal enable
+
+interface DiffPair:
+    signal p
+    signal n
