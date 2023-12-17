@@ -8,3 +8,13 @@ component ZenerDiode from Diode:
 
 component ShottkyDiode from Diode:
     designator_prefix = "DS"
+
+
+import Power from "interfaces.ato"
+module PowerDiodeOr:
+    diode = new Diode
+    power_in = new Power
+    power_out = new Power
+
+    power_in.vcc ~ diode.anode; diode.cathode ~ power_out.vcc
+    power_in.gnd ~ power_out.gnd
