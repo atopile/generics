@@ -12,6 +12,9 @@ component ShottkyDiode from Diode:
 component TVSDiode from Diode:
     designator_prefix = "DT"
 
+component RectifierDiode from Diode:
+    designator_prefix = "DR"
+
 
 import Power from "interfaces.ato"
 module PowerDiodeOr:
