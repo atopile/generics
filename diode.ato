@@ -9,6 +9,9 @@ component ZenerDiode from Diode:
 component ShottkyDiode from Diode:
     designator_prefix = "DS"
 
+component TVSDiode from Diode:
+    designator_prefix = "DT"
+
 
 import Power from "interfaces.ato"
 module PowerDiodeOr:
