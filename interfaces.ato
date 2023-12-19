@@ -2,6 +2,10 @@ interface Power:
     signal vcc
     signal gnd
 
+interface FloatPower:
+    signal v_pos
+    signal v_neg
+
 interface I2C:
     signal sda
     signal scl
