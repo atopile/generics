@@ -84,3 +84,7 @@ interface Load:
 interface Pair:
     signal io
     signal gnd
+
+interface Analog:
+    signal io
+    signal gnd
