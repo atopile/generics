@@ -1,5 +1,11 @@
+import Power from "generics/interfaces.ato"
+
 component Capacitor:
     signal p1 ~ pin 1
     signal p2 ~ pin 2
     designator_prefix = "C"
     mpn = "generic_capacitor"
+
+    power = new Power
+    power.vcc ~ p1
+    power.gnd ~ p2
