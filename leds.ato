@@ -1,12 +1,9 @@
 import Resistor from "resistor.ato"
 import Power from "interfaces.ato"
-import KT_0603R from "elec/src/KT-0603R.ato"
-import KT_0603G from "elec/src/KT-0603G.ato"
-import KT_0603B from "elec/src/KT-0603B.ato"
 
 component LED:
-    signal anode ~ pin 1
-    signal cathode ~ pin 2
+    signal anode ~ pin 2
+    signal cathode ~ pin 1
     designator_prefix = "LED"
     max_current = "20mA"
 
@@ -23,19 +20,45 @@ module LEDIndicator:
     input ~ led.anode; led.cathode ~ resistor.p1; resistor.p2 ~ gnd
 
 module LEDIndicatorRed from LEDIndicator:
-    led -> KT_0603R
+    led -> _KT_0603R
 
     #Assuming 3.3v input, 2V forward voltage, 5mA current
     resistor.value = "270"
 
 module LEDIndicatorGreen from LEDIndicator:
-    led -> KT_0603G
+    led -> _KT_0603G
 
     #Assuming 3.3v input, 2.75V forward voltage, 5mA current
     resistor.value = "110"
 
 module LEDIndicatorBlue from LEDIndicator:
-    led -> KT_0603B
+    led -> _KT_0603B
 
     #Assuming 3.3v input, 2.9V forward voltage, 5mA current
     resistor.value = "82"
+
+component _KT_0603B from LED:
+    # component Blue light 0603
+    footprint = "LED0603-RD"
+    mpn = "C2288"
+    # pins
+    signal cathode ~ pin 1
+    signal anode ~ pin 2
+
+component _KT_0603G:
+    # component 0603 Green 509-620mcd
+    footprint = "LED0603-RD"
+    lcsc_id = "C12624"
+    designator_prefix = "LED"
+    # pins
+    signal anode ~ pin 2
+    signal cathode ~ pin 1
+
+component _KT_0603R:
+    # component KT-0603R
+    footprint = "LED0603-RD"
+    lcsc_id = "C2286"
+    # pins
+    signal cathode ~ pin 1
+    signal anode ~ pin 2
+

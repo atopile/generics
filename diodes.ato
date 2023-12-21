@@ -1,0 +1,41 @@
+component Diode:
+    signal anode
+    signal cathode
+    designator_prefix = "D"
+
+component ZenerDiode from Diode:
+    designator_prefix = "DZ"
+
+component ShottkyDiode from Diode:
+    designator_prefix = "DS"
+
+import Power from "interfaces.ato"
+module PowerDiodeOr:
+    diode = new _SS34_C8678 # ShottkyDiode
+    power_in = new Power
+    power_out = new Power
+
+    power_in.vcc ~ diode.anode; diode.cathode ~ power_out.vcc
+    power_in.gnd ~ power_out.gnd
+
+import Power_AC from "interfaces.ato"
+module FULLBRIDGERECTIFIER:
+    power_in = new Power_AC
+    power_out = new Power
+
+    d1 = new Diode
+    d2 = new Diode
+    d3 = new Diode
+    d4 = new Diode
+
+    power_in.line1 ~ d1.anode; d1.cathode ~ power_out.vcc; power_out.vcc~ d2.cathode; d2.anode ~ power_in.neutral
+    power_in.line1 ~ d4.cathode; d4.anode ~ power_out.gnd; power_out.gnd ~ d3.anode; d3.cathode ~ power_in.neutral
+
+
+component _SS34_C8678 from ShottkyDiode:
+    # component SS34_C8678
+    footprint = "SMA_L4.3-W2.6-LS5.2-RD"
+    mpn = "C8678"
+    # pins
+    signal anode ~ pin 2
+    signal cathode ~ pin 1
