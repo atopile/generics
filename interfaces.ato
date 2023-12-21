@@ -10,6 +10,13 @@ interface I2C:
     signal sda
     signal scl
 
+interface SWD:
+    signal swclk
+    signal swdio
+    signal swo
+    signal reset
+    signal gnd
+
 interface SPI:
     signal mosi
     signal miso
