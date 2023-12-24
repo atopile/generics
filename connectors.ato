@@ -1,0 +1,17 @@
+import WJ15EDGRC_3_81_2P from "elec/src/WJ15EDGRC_3_81_2P.ato"
+
+component Header2Pin:
+    signal p1
+    signal p2
+
+component PluggableHeader2Pin from _WJ15EDGRC_3_81_2P:
+    signal p1
+    signal p2
+
+component _WJ15EDGRC_3_81_2P:
+    # component WJ15EDGRC-3.81-2P
+    footprint = "CONN-TH_2P-P3.81_WJ15EDGRC-3.81-2P"
+    lcsc_id = "C8387"
+    # pins
+    signal p1 ~ pin 1
+    signal p2 ~ pin 2

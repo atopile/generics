@@ -1,0 +1,66 @@
+component NoButton:
+    signal in
+    signal out
+
+component ButtonSKRPACE010 from NoButton:
+    in ~ pin 1
+    in ~ pin 2
+    out ~ pin 3
+    out ~ pin 4
+    footprint = "KEY-SMD_4P-L4.2-W3.2-P2.20-LS4.6"
+    mpn = "C139797"
+
+component Button90Degree from NoButton:
+    in ~ pin 1
+    out ~ pin 2
+
+    footprint = "KEY-SMD_SKTDLDE010"
+
+component SKTDLDE010:
+    # component SKTDLDE010
+    footprint = "KEY-SMD_SKTDLDE010"
+    mpn = "C115365"
+    # pins
+    signal _1 ~ pin 1
+    signal _2 ~ pin 2
+    signal _3 ~ pin 3
+    signal _4 ~ pin 4
+
+import Resistor from "resistors.ato"
+import Power from "interfaces.ato"
+
+component ButtonVertical from NoButton:
+    footprint = "SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL-2"
+    mpn = "C318884"
+    # pins
+    signal input ~ pin 2
+    input ~ pin 1
+    signal output ~ pin 4
+    output ~ pin 3
+
+    # pin types
+
+component _1TS003B_1400_3500A from NoButton:
+    # component 1TS003B-1400-3500A
+    footprint = "KEY-SMD_1TS003B"
+    mpn = "C319392"
+    # pins
+    in ~ pin 1
+    out ~ pin 2
+    signal _3 ~ pin 3
+    signal _4 ~ pin 4
+
+
+module ButtonPullup:
+    btn = new NoButton
+    signal out
+    power = new Power
+    pullup = new Resistor
+    pullup.value = "10k"
+    pullup.footprint = "R0402"
+
+    power.vcc ~ pullup.p1; pullup.p2 ~ btn.in; btn.out ~ power.gnd
+    out ~ btn.in
+
+module ButtonPullup90Degree from ButtonPullup:
+    btn -> _1TS003B_1400_3500A
