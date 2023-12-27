@@ -9,3 +9,9 @@ component Transistor_pnp:
     signal collector
     signal emitter
     designator_prefix = "Q"
+
+component Triac:
+    signal MT1
+    signal MT2
+    signal gate
+    designator_prefix = "TR"

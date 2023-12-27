@@ -6,6 +6,11 @@ interface FloatPower:
     signal v_pos
     signal v_neg
 
+interface PowerAC:
+    signal l1
+    signal n
+    signal gnd
+
 interface I2C:
     signal sda
     signal scl

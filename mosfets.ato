@@ -3,13 +3,13 @@ import Load from "generics/interfaces.ato"
 import Resistor from "generics/interfaces.ato"
 import Diode from "generics/diodes.ato"
 
-component Mosfet_nchannel:
+component NFET:
     signal gate
     signal drain
     signal source
     designator_prefix = "Q"
 
-component Mosfet_pchannel:
+component PFET:
     signal gate
     signal drain
     signal source
