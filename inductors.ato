@@ -1,4 +1,4 @@
 component Inductor:
-    signal p1 ~ pin 1
-    signal p2 ~ pin 2
+    signal p1
+    signal p2
     designator_prefix = "L"
