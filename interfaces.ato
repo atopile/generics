@@ -27,6 +27,13 @@ interface SPI:
     signal sck
     signal cs
 
+interface LCDSPI:
+    signal mosi
+    signal sck
+    signal cs
+    signal dc
+    signal reset
+
 interface UART:
     signal tx
     signal rx
