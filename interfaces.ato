@@ -33,6 +33,7 @@ interface LCDSPI:
     signal cs
     signal dc
     signal reset
+    signal backlightEN
 
 interface UART:
     signal tx
@@ -55,6 +56,15 @@ interface Ethernet:
 interface USB2:
     signal dp
     signal dm
+
+interface USB_PD:
+    signal dp
+    signal dm
+    signal cc1
+    signal cc2
+    signal vbusADC
+    signal gnd
+    signal vbus
 
 interface QSPI:
     signal cs
