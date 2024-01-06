@@ -18,7 +18,6 @@ interface I2C:
 interface SWD:
     signal swclk
     signal swdio
-    signal vcc
     signal gnd
 
 interface SPI:
