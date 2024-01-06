@@ -56,7 +56,7 @@ module ButtonPullup:
     signal out
     power = new Power
     pullup = new Resistor
-    pullup.value = "10k"
+    pullup.value = 10k +/- 20%
     pullup.footprint = "R0402"
 
     power.vcc ~ pullup.p1; pullup.p2 ~ btn.in; btn.out ~ power.gnd
