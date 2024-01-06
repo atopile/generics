@@ -18,8 +18,6 @@ interface I2C:
 interface SWD:
     signal swclk
     signal swdio
-    signal swo
-    signal reset
     signal gnd
 
 interface SPI:
@@ -28,25 +26,44 @@ interface SPI:
     signal sck
     signal cs
 
+interface LCDSPI:
+    signal mosi
+    signal sck
+    signal cs
+    signal dc
+    signal reset
+    signal backlightEN
+
 interface UART:
     signal tx
     signal rx
 
-interface CAN:
+interface CAN_TTL:
     signal tx
     signal rx
 
-interface ISOCAN:
+interface CAN:
     signal CANH
     signal CANL
 
 interface Ethernet:
-    signal tx
-    signal rx
+    signal tx_p
+    signal rx_p
+    signal tx_n
+    signal rx_n
 
 interface USB2:
     signal dp
     signal dm
+
+interface USB_PD:
+    signal dp
+    signal dm
+    signal cc1
+    signal cc2
+    signal vbusADC
+    signal gnd
+    signal vbus
 
 interface QSPI:
     signal cs
