@@ -2,9 +2,25 @@ interface Power:
     signal vcc
     signal gnd
 
+interface FloatPower:
+    signal v_pos
+    signal v_neg
+
+interface PowerAC:
+    signal l1
+    signal n
+    signal gnd
+
 interface I2C:
     signal sda
     signal scl
+
+interface SWD:
+    signal swclk
+    signal swdio
+    signal swo
+    signal reset
+    signal gnd
 
 interface SPI:
     signal mosi
@@ -61,3 +77,19 @@ interface BLDC_3PWM:
     signal phase_b
     signal phase_c
     signal enable
+
+interface DiffPair:
+    signal p
+    signal n
+
+interface Load:
+    signal p
+    signal n
+
+interface Pair:
+    signal io
+    signal gnd
+
+interface Analog:
+    signal io
+    signal gnd

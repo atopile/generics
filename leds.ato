@@ -5,7 +5,7 @@ component LED:
     signal anode ~ pin 2
     signal cathode ~ pin 1
     designator_prefix = "LED"
-    max_current = "20mA"
+    current = 0 to 20mA
 
 module LEDIndicator:
     power = new Power
@@ -23,19 +23,19 @@ module LEDIndicatorRed from LEDIndicator:
     led -> _KT_0603R
 
     #Assuming 3.3v input, 2V forward voltage, 5mA current
-    resistor.value = "270"
+    resistor.value = 270 +/- 10%
 
 module LEDIndicatorGreen from LEDIndicator:
     led -> _KT_0603G
 
     #Assuming 3.3v input, 2.75V forward voltage, 5mA current
-    resistor.value = "110"
+    resistor.value = 110 +/- 10%
 
 module LEDIndicatorBlue from LEDIndicator:
     led -> _KT_0603B
 
     #Assuming 3.3v input, 2.9V forward voltage, 5mA current
-    resistor.value = "82"
+    resistor.value = 82 +/- 10%
 
 component _KT_0603B from LED:
     # component Blue light 0603

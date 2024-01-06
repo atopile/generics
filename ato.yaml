@@ -1,2 +1,1 @@
-dependencies:
-- RP2040
+ato-version: ^0.2.0

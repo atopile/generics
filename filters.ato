@@ -1,0 +1,17 @@
+import Power from "interfaces.ato"
+import Capacitor from "capacitor.ato"
+import Inductor from "capacitor.ato"
+
+module LowPassPiFilter:
+    C1 = new Capacitor
+    L1 = new Inductor
+    C2 = new Capacitor
+
+    power_in = new Power
+    power_out = new Power
+
+    power_in.vcc ~ C1.p1; C1.p1 ~ L1.p1
+    power_out.cvv ~ L1.p2; L1.p2 ~C2.P1
+    C1.p2 ~ power_in.gnd
+    C2.p2 ~ power_out.gnd
+    power_in.gnd ~ power_out.gnd

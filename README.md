@@ -17,11 +17,12 @@ Run in the terminal:
 ```ato install generics``
 
 Add to your ato project:
-Resistors   ```import Resistor from "generics/resistor.ato```
-Capacitors  ```import Capacitor from "generics/capacitor.ato```
-Inductors   ```import Inductor from "generics/inductor.ato```
-Interfaces  ```import Interface from "generics/interface.ato```
-etc...
+
+- Resistors   ```import Resistor from "generics/resistor.ato```
+- Capacitors  ```import Capacitor from "generics/capacitor.ato```
+- Inductors   ```import Inductor from "generics/inductor.ato```
+- Interfaces  ```import Interface from "generics/interface.ato```
+- etc...
 
 ## Features
 ### Resistors
