@@ -18,6 +18,7 @@ interface GPIO:
 interface I2C:
     signal sda
     signal scl
+    signal gnd
 
 interface SWD:
     signal swclk
@@ -29,6 +30,7 @@ interface SPI:
     signal miso
     signal sck
     signal cs
+    signal gnd
 
 interface LCDSPI:
     signal mosi
@@ -59,6 +61,7 @@ interface Ethernet:
 interface USB2:
     signal dp
     signal dm
+    signal gnd
 
 interface USB_PD:
     signal dp
