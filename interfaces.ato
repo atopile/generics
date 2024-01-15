@@ -43,6 +43,7 @@ interface LCDSPI:
 interface UART:
     signal tx
     signal rx
+    signal gnd
 
 interface CAN_TTL:
     signal tx
