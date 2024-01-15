@@ -11,6 +11,10 @@ interface PowerAC:
     signal n
     signal gnd
 
+interface GPIO:
+    signal io
+    signal gnd
+
 interface I2C:
     signal sda
     signal scl
