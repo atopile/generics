@@ -11,9 +11,14 @@ interface PowerAC:
     signal n
     signal gnd
 
+interface GPIO:
+    signal io
+    signal gnd
+
 interface I2C:
     signal sda
     signal scl
+    signal gnd
 
 interface SWD:
     signal swclk
@@ -25,6 +30,7 @@ interface SPI:
     signal miso
     signal sck
     signal cs
+    signal gnd
 
 interface LCDSPI:
     signal mosi
@@ -37,6 +43,7 @@ interface LCDSPI:
 interface UART:
     signal tx
     signal rx
+    signal gnd
 
 interface CAN_TTL:
     signal tx
@@ -55,6 +62,7 @@ interface Ethernet:
 interface USB2:
     signal dp
     signal dm
+    signal gnd
 
 interface USB_PD:
     signal dp
