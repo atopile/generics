@@ -8,12 +8,18 @@ component NFET:
     signal drain
     signal source
     designator_prefix = "Q"
+    mpn = "generic_mosfet"
+    type = "mosfet"
+    polarity = "N Channel"
 
 component PFET:
     signal gate
     signal drain
     signal source
     designator_prefix = "Q"
+    mpn = "generic_mosfet"
+    type = "mosfet"
+    polarity = "P Channel"
 
 module LowSideSwitch:
     fet = new Mosfet_nchannel

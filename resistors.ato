@@ -3,6 +3,7 @@ component Resistor:
     signal p2 ~ pin 2
     designator_prefix = "R"
     mpn = "generic_resistor"
+    type = "resistor"
 
     # Equations
     # R = V/I

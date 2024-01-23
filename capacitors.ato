@@ -5,6 +5,7 @@ component Capacitor:
     signal p2 ~ pin 2
     designator_prefix = "C"
     mpn = "generic_capacitor"
+    type = "capacitor"
 
     power = new Power
     power.vcc ~ p1
