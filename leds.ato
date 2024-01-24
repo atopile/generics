@@ -14,7 +14,7 @@ module LEDIndicator:
     resistor = new Resistor
     led = new LED
 
-    resistor.footprint = "R0402"
+    resistor.package = "0402"
 
     # Connect up
     input ~ led.anode; led.cathode ~ resistor.p1; resistor.p2 ~ gnd

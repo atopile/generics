@@ -12,8 +12,8 @@ module VDiv:
 
     r_top = new Resistor
     r_bottom = new Resistor
-    r_top.footprint = "R0402"
-    r_bottom.footprint = "R0402"
+    r_top.package = "0402"
+    r_bottom.package = "0402"
 
     top ~ r_top.1; r_top.2 ~ r_bottom.1; r_bottom.2 ~ bottom
     r_top.2 ~ out
