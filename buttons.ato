@@ -13,8 +13,11 @@ component ButtonSKRPACE010 from NoButton:
 component Button90Degree from NoButton:
     in ~ pin 1
     out ~ pin 2
+    signal anchor ~ pin 3
+    anchor ~ pin 4
 
     footprint = "KEY-SMD_SKTDLDE010"
+    mpn = "C115365"
 
 component SKTDLDE010:
     # component SKTDLDE010
