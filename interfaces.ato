@@ -96,6 +96,7 @@ interface JTAG:
     signal tdo
     signal reset
     signal vcc
+    signal gnd
 
 interface BLDC_3PWM:
     signal phase_a
