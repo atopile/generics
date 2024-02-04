@@ -3,25 +3,33 @@ import Power from "interfaces.ato"
 module Regulator:
     power_in = new Power
     power_out = new Power
+    # connect grounds (non isolated regulator)
+    power_in.gnd ~ power_out.gnd
 
-import Vdiv from "StandardCircuits.ato"
-module AdjustableRegulator from regulator:
-    feedback_div = new Vdiv
+import VDiv from "generics/vdivs.ato"
+module AdjustableRegulator from Regulator:
+    feedback_div = new VDiv
 
 module Buck from AdjustableRegulator:
     # regulator parameters
+    type = "Buck"
 
 module Boost from AdjustableRegulator:
     # regulator parameters
+    type = "Boost"
 
-module FixedLDO from regulator:
+module FixedLDO from Regulator:
     # regulator parameters
+    type = "FixedLDO"
 
 module AdjustableLDO from AdjustableRegulator:
     # regulator parameters
+    type = "AdjustableLDO"
 
 module Flyback from AdjustableRegulator:
     # regulator parameters
+    type = "Flyback"
 
 module Forward from AdjustableRegulator:
     # regulator parameters
+    type = "Forward"
