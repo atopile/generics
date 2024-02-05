@@ -1,11 +1,11 @@
-import Resistor from "resistor.ato"
+import Resistor from "resistors.ato"
 import Power from "interfaces.ato"
 
 component LED:
     signal anode ~ pin 2
     signal cathode ~ pin 1
     designator_prefix = "LED"
-    current = 0 to 20mA
+    # current = 0 to 20mA
 
 module LEDIndicator:
     power = new Power
@@ -13,8 +13,11 @@ module LEDIndicator:
     signal gnd
     resistor = new Resistor
     led = new LED
-
     resistor.package = "0402"
+
+    # Connect power
+    power.vcc ~ input
+    power.gnd ~ gnd
 
     # Connect up
     input ~ led.anode; led.cathode ~ resistor.p1; resistor.p2 ~ gnd
@@ -23,19 +26,19 @@ module LEDIndicatorRed from LEDIndicator:
     led -> _KT_0603R
 
     #Assuming 3.3v input, 2V forward voltage, 5mA current
-    resistor.value = 270ohms +/- 10%
+    resistor.value = 270ohms +/- 20%
 
 module LEDIndicatorGreen from LEDIndicator:
     led -> _KT_0603G
 
     #Assuming 3.3v input, 2.75V forward voltage, 5mA current
-    resistor.value = 110ohms +/- 10%
+    resistor.value = 110ohms +/- 20%
 
 module LEDIndicatorBlue from LEDIndicator:
     led -> _KT_0603B
 
     #Assuming 3.3v input, 2.9V forward voltage, 5mA current
-    resistor.value = 82ohms +/- 10%
+    resistor.value = 82ohms +/- 20%
 
 component _KT_0603B from LED:
     # component Blue light 0603
