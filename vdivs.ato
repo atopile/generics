@@ -1,10 +1,15 @@
 import Resistor from "resistors.ato"
 import Power from "interfaces.ato"
+import Pair from "interfaces.ato"
 
 module VDiv:
     signal top
     signal out
     signal bottom
+
+    output = new Pair
+    output.io ~ out
+    output.gnd ~ bottom
 
     in = new Power
     in.vcc ~ top
