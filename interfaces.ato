@@ -11,6 +11,12 @@ interface PowerAC:
     signal n
     signal gnd
 
+interface STEP_DIR:
+    signal step
+    signal dir
+    signal enable
+    signal gnd
+
 interface GPIO:
     signal io
     signal gnd
