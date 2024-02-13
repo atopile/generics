@@ -17,6 +17,12 @@ interface STEP_DIR:
     signal enable
     signal gnd
 
+interface STEPPER_MOTOR:
+    signal a1
+    signal a2
+    signal b1
+    signal b2
+
 interface GPIO:
     signal io
     signal gnd
