@@ -1,25 +1,27 @@
-"""
-Its a little confusing how this works, but the idea is that you might optionally want a button in your design. 
-To achieve this with our current compiler, we need an empty module 'NoButon' (Normally Open) that can be
-replaced using the '->' operator with another module that has a button. FOr example the 'ButtonSKRPACE010'.
-
-Usage example:
-import ButtonPullup from generics/buttons
-import ButtonSKRPACE010 from generics/buttons
-
-module MyMicrocontroller:
-    ...
-    btn_pullup = new ButtonPullup
-    ...
-
-module MyProject:
-    ...
-    micro = new MyMicrocontroller #instantiate microcontroller (in this case there will be no button in your design)
-    button_pullup.btn -> ButtonSKRPACE010 #replace with class, now there will be a button in your design.
-"""
+import Power from "generics/interfaces.ato"
+import Resistor from "generics/resistors.ato"
 
 
 module NoButton:
+    """
+    Its a little confusing how this works, but the idea is that you might optionally want a button in your design. 
+    To achieve this with our current compiler, we need an empty module 'NoButon' (Normally Open) that can be
+    replaced using the '->' operator with another module that has a button. FOr example the 'ButtonSKRPACE010'.
+
+    Usage example:
+    import ButtonPullup from generics/buttons.ato
+    import ButtonSKRPACE010 from generics/buttons.ato
+
+    module MyMicrocontroller:
+        ...
+        btn_pullup = new ButtonPullup
+        ...
+
+    module MyProject:
+        ...
+        micro = new MyMicrocontroller #instantiate microcontroller (in this case there will be no button in your design)
+        button_pullup.btn -> ButtonSKRPACE010 #replace with class, now there will be a button in your design.
+    """
     signal in
     signal out
 
