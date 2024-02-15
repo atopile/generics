@@ -1,16 +1,42 @@
-component NoButton:
+"""
+Its a little confusing how this works, but the idea is that you might optionally want a button in your design. 
+To achieve this with our current compiler, we need an empty module 'NoButon' (Normally Open) that can be
+replaced using the '->' operator with another module that has a button. FOr example the 'ButtonSKRPACE010'.
+
+Usage example:
+import ButtonPullup from generics/buttons
+import ButtonSKRPACE010 from generics/buttons
+
+module MyMicrocontroller:
+    ...
+    btn_pullup = new ButtonPullup
+    ...
+
+module MyProject:
+    ...
+    micro = new MyMicrocontroller #instantiate microcontroller (in this case there will be no button in your design)
+    button_pullup.btn -> ButtonSKRPACE010 #replace with class, now there will be a button in your design.
+"""
+
+
+module NoButton:
     signal in
     signal out
 
-component ButtonSKRPACE010 from NoButton:
-    in ~ pin 1
+component _ButtonSKRPACE010:
+    signal in ~ pin 1
     in ~ pin 2
-    out ~ pin 3
+    signal out ~ pin 3
     out ~ pin 4
     footprint = "KEY-SMD_4P-L4.2-W3.2-P2.20-LS4.6"
     mpn = "C139797"
 
-component Button90Degree from NoButton:
+module ButtonSKRPACE010 from NoButton:
+    btn = new _ButtonSKRPACE010
+    in ~ btn.in
+    out ~ btn.out
+
+component _ButtonSKTDLDE010:
     in ~ pin 1
     out ~ pin 2
     signal anchor ~ pin 3
@@ -19,40 +45,10 @@ component Button90Degree from NoButton:
     footprint = "KEY-SMD_SKTDLDE010"
     mpn = "C115365"
 
-component SKTDLDE010:
-    # component SKTDLDE010
-    footprint = "KEY-SMD_SKTDLDE010"
-    mpn = "C115365"
-    # pins
-    signal _1 ~ pin 1
-    signal _2 ~ pin 2
-    signal _3 ~ pin 3
-    signal _4 ~ pin 4
-
-import Resistor from "resistors.ato"
-import Power from "interfaces.ato"
-
-component ButtonVertical from NoButton:
-    footprint = "SW-SMD_4P-L5.1-W5.1-P3.70-LS6.5-TL-2"
-    mpn = "C318884"
-    # pins
-    signal input ~ pin 2
-    input ~ pin 1
-    signal output ~ pin 4
-    output ~ pin 3
-
-    # pin types
-
-component _1TS003B_1400_3500A from NoButton:
-    # component 1TS003B-1400-3500A
-    footprint = "KEY-SMD_1TS003B"
-    mpn = "C319392"
-    # pins
-    in ~ pin 1
-    out ~ pin 2
-    signal _3 ~ pin 3
-    signal _4 ~ pin 4
-
+module ButtonSKTDLDE010 from NoButton:
+    btn = new _ButtonSKTDLDE010
+    in ~ btn.in
+    out ~ btn.out
 
 module ButtonPullup:
     btn = new NoButton
