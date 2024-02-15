@@ -1,4 +1,5 @@
 import Power from "interfaces.ato"
+import VDiv from "vdivs.ato"
 
 module Regulator:
     power_in = new Power
@@ -6,7 +7,6 @@ module Regulator:
     # connect grounds (non isolated regulator)
     power_in.gnd ~ power_out.gnd
 
-import VDiv from "generics/vdivs.ato"
 module AdjustableRegulator from Regulator:
     feedback_div = new VDiv
 
@@ -17,6 +17,10 @@ module Buck from AdjustableRegulator:
 module Boost from AdjustableRegulator:
     # regulator parameters
     type = "Boost"
+
+module AdjustableLDO from AdjustableRegulator:
+    # regulator parameters
+    type = "AdjustableLDO"
 
 module FixedLDO from Regulator:
     # regulator parameters
