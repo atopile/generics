@@ -6,16 +6,19 @@ component Crystal:
     signal xout
     signal gnd
 
-module Osccilator:
+module Oscillator:
     xin = new Pair
     xout = new Pair
 
     signal gnd ~ xin.gnd
     gnd ~ xout.gnd
 
-    crystal = new crystal
-    load_cap_1 = new capacitor
-    load_cap_2 = new capacitor
+    crystal = new Crystal
+    load_cap_1 = new Capacitor
+    load_cap_2 = new Capacitor
+
+    load_cap_1.package = "0402"
+    load_cap_2.package = "0402"
 
     load_cap_1.package = "0402"
     load_cap_2.package = "0402"
