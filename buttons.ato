@@ -1,5 +1,6 @@
 import Power from "generics/interfaces.ato"
 import Resistor from "generics/resistors.ato"
+import Pair from "generics/interfaces.ato"
 
 
 module NoButton:
@@ -55,6 +56,9 @@ module ButtonSKTDLDE010 from NoButton:
 module ButtonPullup:
     btn = new NoButton
     signal out
+    output = new Pair
+    output.io ~ out
+    output.gnd ~ gnd
     power = new Power
     pullup = new Resistor
     pullup.value = 10kohms +/- 20%
