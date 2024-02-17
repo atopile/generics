@@ -17,5 +17,8 @@ module Osccilator:
     load_cap_1 = new capacitor
     load_cap_2 = new capacitor
 
+    load_cap_1.package = "0402"
+    load_cap_2.package = "0402"
+
     crystal.xin ~ load_cap_1.1; load_cap_1.2 ~ gnd
     crystal.xout ~ load_cap_2.1; load_cap_2.2 ~ gnd
