@@ -55,12 +55,14 @@ module ButtonSKTDLDE010 from NoButton:
 
 module ButtonPullup:
     btn = new NoButton
-    signal out
     output = new Pair
-    output.io ~ out
-    output.gnd ~ gnd
     power = new Power
     pullup = new Resistor
+
+    signal out # depricated
+
+    output.io ~ out
+    output.gnd ~ power.gnd
     pullup.value = 10kohms +/- 20%
     pullup.package = "0402"
 
