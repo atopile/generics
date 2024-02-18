@@ -1,3 +1,6 @@
+import Power from "interfaces.ato"
+import I2C from "interfaces.ato"
+
 component Resistor:
     signal p1 ~ pin 1
     signal p2 ~ pin 2
