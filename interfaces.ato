@@ -11,6 +11,18 @@ interface PowerAC:
     signal n
     signal gnd
 
+interface STEP_DIR:
+    signal step
+    signal dir
+    signal enable
+    signal gnd
+
+interface STEPPER_MOTOR:
+    signal a1
+    signal a2
+    signal b1
+    signal b2
+
 interface GPIO:
     signal io
     signal gnd
@@ -23,6 +35,7 @@ interface I2C:
 interface SWD:
     signal swclk
     signal swdio
+    signal swo
     signal gnd
 
 interface SPI:
