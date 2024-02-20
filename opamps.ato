@@ -1,7 +1,7 @@
 component Opamp:
     power = new Power
-    signal inverting_input
-    signal noninverting_input
+    signal inverting
+    signal noninverting
     signal output
     designator_prefix = "U"
 
@@ -19,7 +19,7 @@ module VoltageFollower:
     opamp.inverting_input ~ opamp.output
     output ~ opamp.output
 
-import vdiv from "StandardCircuits.ato"
+# import vdiv from "StandardCircuits.ato"
 module Amplifier:
     power = new Power
     opamp = new Opamp
@@ -28,7 +28,7 @@ module Amplifier:
     power ~ opamp.power
 
     # TODO: add equation for gain
-    gain = unknown\
+    gain = unknown
     vdiv.r_top.value = unknown
     vdiv.r_bottom.value = unknown
 
