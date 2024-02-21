@@ -126,7 +126,9 @@ interface Load:
     signal n
 
 interface Pair:
+    signal vcc
     signal io
+    vcc ~ io
     signal gnd
 
 interface Analog:

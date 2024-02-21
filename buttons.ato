@@ -60,6 +60,11 @@ module ButtonPullup:
     output = new Pair
     power = new Power
     pullup = new Resistor
+
+    signal out # depricated
+
+    output.io ~ out
+    output.gnd ~ power.gnd
     pullup.value = 10kohms +/- 20%
     pullup.package = "0402"
 
