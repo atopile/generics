@@ -132,3 +132,9 @@ interface Pair:
 interface Analog:
     signal io
     signal gnd
+
+interface I2S:
+    signal ws
+    signal sck
+    signal sd
+    signal gnd
