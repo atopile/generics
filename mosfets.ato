@@ -30,25 +30,26 @@ module HalfBridge:
     shunt_output = new DiffPair
     output = new Pair
 
-    # Components
-    nfet_high = new NFET
-    nfet_low = new NFET
-    shunt = new Resistor
+    # this doesnt work until we have replace with instance.
+    # # Components
+    # nfet_high = new NFET
+    # nfet_low = new NFET
+    # shunt = new Resistor
 
-    # Connect power
-    power.vcc ~ nfet_high.drain
-    output ~ nfe_high.source
-    output ~ nfet_low.drain
-    power.gnd ~ shunt.2; shunt.1 ~ nfet_high.source
+    # # Connect power
+    # power.vcc ~ nfet_high.drain
+    # output ~ nfe_high.source
+    # output ~ nfet_low.drain
+    # power.gnd ~ shunt.2; shunt.1 ~ nfet_high.source
 
-    # Connect the gates
-    gate_high.io ~ nfet_high.gate
-    gate_low.io ~ nfet_low.gate
+    # # Connect the gates
+    # gate_high.io ~ nfet_high.gate
+    # gate_low.io ~ nfet_low.gate
 
-    # Connect the gnds
-    output.gnd ~ power.gnd
-    gate_high.gnd ~ power.gnd
-    gate_low.gnd ~ power.gnd
+    # # Connect the gnds
+    # output.gnd ~ power.gnd
+    # gate_high.gnd ~ power.gnd
+    # gate_low.gnd ~ power.gnd
 
 module LowSideSwitch:
     fet = new Mosfet_nchannel

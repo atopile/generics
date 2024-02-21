@@ -1,6 +1,5 @@
-import Power from "generics/interfaces.ato"
-import Resistor from "generics/resistors.ato"
-
+from "interfaces.ato" import Pair, Power
+from "resistors.ato" import Resistor
 
 module NoButton:
     """
@@ -48,6 +47,9 @@ component _ButtonSKTDLDE010:
     mpn = "C115365"
 
 module ButtonSKTDLDE010 from NoButton:
+    """
+    Small SMD right angle button
+    """
     btn = new _ButtonSKTDLDE010
     in ~ btn.in
     out ~ btn.out
@@ -55,6 +57,7 @@ module ButtonSKTDLDE010 from NoButton:
 module ButtonPullup:
     btn = new NoButton
     signal out
+    output = new Pair
     power = new Power
     pullup = new Resistor
     pullup.value = 10kohms +/- 20%
@@ -62,6 +65,24 @@ module ButtonPullup:
 
     power.vcc ~ pullup.p1; pullup.p2 ~ btn.in; btn.out ~ power.gnd
     out ~ btn.in
+
+    output.io ~ out
+    output.gnd ~ power.gnd
+
+module ButtonPulldown:
+    btn = new NoButton
+    signal out
+    output = new Pair
+    power = new Power
+    pulldown = new Resistor
+    pulldown.value = 10kohms +/- 20%
+    pulldown.package = "0402"
+
+    power.gnd ~ pulldown.p1; pulldown.p2 ~ btn.in; btn.out ~ power.vcc
+    out ~ btn.in
+
+    output.io ~ out
+    output.gnd ~ power.gnd
 
 module ButtonPullup90Degree from ButtonPullup:
     btn -> _1TS003B_1400_3500A

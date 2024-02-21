@@ -22,10 +22,15 @@ component RectifierDiode from Diode:
 
 import Power from "interfaces.ato"
 module PowerDiodeOr:
+    """
+    A diode or gate that combines two power rails, only dropping the 
+    """
     diode = new ShottkyDiode
-    power_in = new Power
+    power_in1 = new Power
+    power_in2 = new Power
     power_out = new Power
 
+    power_in2 ~ power_out
     power_in.vcc ~ diode.anode; diode.cathode ~ power_out.vcc
     power_in.gnd ~ power_out.gnd
 
