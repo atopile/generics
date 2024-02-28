@@ -135,13 +135,19 @@ interface Analog:
     signal io
     signal gnd
 
-interface SSI
+interface I2S:
+    signal ws
+    signal sck
+    signal sd
+    signal gnd
+
+interface SSI:
     signal do
     signal clk
     signal csn
     signal gnd
 
-interface QEP
+interface QEP:
     signal a
     signal b
     signal z

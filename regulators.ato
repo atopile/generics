@@ -18,6 +18,10 @@ module Boost from AdjustableRegulator:
     # regulator parameters
     type = "Boost"
 
+module LDO from Regulator:
+    # regulator parameters
+    type = "LDO"
+
 module AdjustableLDO from AdjustableRegulator:
     # regulator parameters
     type = "AdjustableLDO"
