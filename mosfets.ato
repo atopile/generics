@@ -1,7 +1,9 @@
-import Power from "generics/interfaces.ato"
-import Load from "generics/interfaces.ato"
-import Resistor from "generics/interfaces.ato"
-import Diode from "generics/diodes.ato"
+import Power from "interfaces.ato"
+import Pair from "interfaces.ato"
+import DiffPair from "interfaces.ato"
+import Load from "interfaces.ato"
+import Resistor from "interfaces.ato"
+import Diode from "diodes.ato"
 
 component NFET:
     signal gate
@@ -20,6 +22,34 @@ component PFET:
     mpn = "generic_mosfet"
     type = "mosfet"
     polarity = "P Channel"
+
+module HalfBridge:
+    power = new Power
+    gate_high = new Pair
+    gate_low = new Pair
+    shunt_output = new DiffPair
+    output = new Pair
+
+    # this doesnt work until we have replace with instance.
+    # # Components
+    # nfet_high = new NFET
+    # nfet_low = new NFET
+    # shunt = new Resistor
+
+    # # Connect power
+    # power.vcc ~ nfet_high.drain
+    # output ~ nfe_high.source
+    # output ~ nfet_low.drain
+    # power.gnd ~ shunt.2; shunt.1 ~ nfet_high.source
+
+    # # Connect the gates
+    # gate_high.io ~ nfet_high.gate
+    # gate_low.io ~ nfet_low.gate
+
+    # # Connect the gnds
+    # output.gnd ~ power.gnd
+    # gate_high.gnd ~ power.gnd
+    # gate_low.gnd ~ power.gnd
 
 module LowSideSwitch:
     fet = new Mosfet_nchannel

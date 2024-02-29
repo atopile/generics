@@ -1,4 +1,5 @@
 import Resistor from "resistors.ato"
+import Capacitor from "capacitors.ato"
 import Power from "interfaces.ato"
 import Pair from "interfaces.ato"
 
@@ -25,9 +26,11 @@ module _VDiv:
     output.io ~ out
     output.gnd ~ bottom
 
-    in = new Power
-    in.vcc ~ top
-    in.gnd ~ bottom
+    in = new Power # legacy
+    power = new Power
+    in ~ power
+    power.vcc ~ top
+    power.gnd ~ bottom
 
     r_top = new Resistor
     r_bottom = new Resistor
@@ -36,3 +39,9 @@ module _VDiv:
 
     top ~ r_top.1; r_top.2 ~ r_bottom.1; r_bottom.2 ~ bottom
     r_top.2 ~ out
+
+module VDivLowPassFilter from VDiv:
+    cap = new Capacitor
+    cap.package = "0402"
+
+    out ~ cap.1; cap.2 ~ bottom

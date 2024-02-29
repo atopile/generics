@@ -1,7 +1,30 @@
 import Power from "interfaces.ato"
-import Capacitor from "capacitors.ato"
-import CapacitorElectrolytic from "capacitors.ato"
-import Inductor from "inductors.ato"
+from "interfaces.ato" import Power, Pair
+from "capacitors.ato" import Capacitor, CapacitorElectrolytic
+from "inductors.ato" import Inductor
+from "resistors.ato" import Resistor
+
+
+module LowPassFilter:
+    # Interfaces
+    input = new Pair
+    output = new Pair
+
+    # Components
+    capacitor = new Capacitor
+    resistor = new Resistor
+
+    # Default values
+    capacitor.package = "0402"
+    resistor.package = "0402"
+
+    # Connections
+    input.io ~ resistor.1
+    output.io ~ resistor.2
+    output.io ~ capacitor.1
+    output.gnd ~ capacitor.2
+    input.gnd ~ output.gnd
+
 
 module LowPassPiFilter:
     C1 = new CapacitorElectrolytic
