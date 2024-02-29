@@ -23,6 +23,10 @@ interface STEPPER_MOTOR:
     signal b1
     signal b2
 
+interface DcMotor:
+    signal a
+    signal b
+
 interface GPIO:
     signal io
     signal gnd
