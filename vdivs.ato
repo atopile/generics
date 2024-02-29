@@ -2,7 +2,21 @@ import Resistor from "resistors.ato"
 import Power from "interfaces.ato"
 import Pair from "interfaces.ato"
 
-module VDiv:
+module VDiv from _VDiv:
+    r_total: resistance
+    # ratio: None
+    v_in: voltage
+    v_out: voltage
+    i_q: current
+
+    # assert r_top.value / r_bottom.value within ratio
+    assert r_top.value + r_bottom.value within r_total
+    assert v_in * r_bottom.value / (r_top.value + r_bottom.value) within v_out
+    # assert v_in * r_total within i_q
+
+
+
+module _VDiv:
     signal top
     signal out
     signal bottom
