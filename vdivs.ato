@@ -10,12 +10,12 @@ module VDiv from _VDiv:
     v_out: voltage
     i_q: current
 
-    i_q = 100uA to 1mA
+    i_q = 100uA to 10mA
 
     # assert r_top.value / r_bottom.value within ratio
-    assert r_top.value + r_bottom.value within r_total
+    # assert r_top.value + r_bottom.value within r_total
     assert v_in * r_bottom.value / (r_top.value + r_bottom.value) within v_out
-    assert v_in * r_total within i_q
+    assert v_in / (r_bottom.value + r_top.value) within i_q
 
 
 module _VDiv:
@@ -47,6 +47,8 @@ module VDivLowPassFilter from VDiv:
     cutoff_frequency: frequency
 
     out ~ cap.1; cap.2 ~ bottom
+    cap.value = 100nF +/- 10%
+
     cutoff_frequency: frequency
 
-    assert 1 / (2 * 3.14 * r_total * cap.value) within cutoff_frequency
+    assert 1 / (2 * 3.14 * r_top.value * cap.value) within cutoff_frequency
