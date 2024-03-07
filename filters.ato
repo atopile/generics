@@ -26,10 +26,10 @@ module LowPassFilter:
     input.gnd ~ output.gnd
 
     # Default values
-    cuttoff_frequency = 1kHz +/- 10%
+    cutoff_frequency = 1kHz +/- 20%
     capacitor.value = 100nF +/- 10%
 
-    assert 1 / (2 * 3.14 * resistor.value * capacitor.value) within cuttoff_frequency
+    assert 1 / (2 * 3.14 * resistor.value * capacitor.value) within cutoff_frequency
 
 
 module LowPassPiFilter:
