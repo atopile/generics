@@ -58,17 +58,18 @@ component _KT_0603B from LED:
     signal cathode ~ pin 1
     signal anode ~ pin 2
 
-component _KT_0603G from LED:
+component _KT_0603G:
     # component 0603 Green 509-620mcd
     footprint = "LED0603-RD"
     mpn = "C12624"
+    designator_prefix = "LED"
     v_f = 2.75V
     i_max = 20mA
     # pins
     signal anode ~ pin 2
     signal cathode ~ pin 1
 
-component _KT_0603R from LED:
+component _KT_0603R:
     # component KT-0603R
     footprint = "LED0603-RD"
     mpn = "C2286"
