@@ -1,5 +1,5 @@
 import Power from "interfaces.ato"
-import VDiv from "vdivs.ato"
+import _VDiv from "vdivs.ato"
 
 module Regulator:
     power_in = new Power
@@ -8,7 +8,19 @@ module Regulator:
     power_in.gnd ~ power_out.gnd
 
 module AdjustableRegulator from Regulator:
-    feedback_div = new VDiv
+    # using vanilla voltage divider without equations
+    feedback_div = new _VDiv
+    v_ref: voltage
+    i_q: current
+    r_total: resistance
+    v_in: voltage
+    v_out: voltage
+
+    # Default value
+    i_q = 100uA to 200uA
+
+    assert v_ref * (1 + feedback_div.r_top.value / feedback_div.r_bottom.value) within v_out
+    assert v_out / (feedback_div.r_top.value + feedback_div.r_bottom.value) within i_q
 
 module Buck from AdjustableRegulator:
     # regulator parameters

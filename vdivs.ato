@@ -3,7 +3,22 @@ import Capacitor from "capacitors.ato"
 import Power from "interfaces.ato"
 import Pair from "interfaces.ato"
 
-module VDiv:
+module VDiv from _VDiv:
+    r_total: resistance
+    # ratio: None
+    v_in: voltage
+    v_out: voltage
+    i_q: current
+
+    i_q = 100uA to 10mA
+
+    # assert r_top.value / r_bottom.value within ratio
+    # assert r_top.value + r_bottom.value within r_total
+    assert v_in * r_bottom.value / (r_top.value + r_bottom.value) within v_out
+    assert v_in / (r_bottom.value + r_top.value) within i_q
+
+
+module _VDiv:
     signal top
     signal out
     signal bottom
@@ -29,5 +44,11 @@ module VDiv:
 module VDivLowPassFilter from VDiv:
     cap = new Capacitor
     cap.package = "0402"
+    cutoff_frequency: frequency
 
     out ~ cap.1; cap.2 ~ bottom
+    cap.value = 100nF +/- 10%
+
+    cutoff_frequency: frequency
+
+    assert 1 / (2 * 3.14 * r_top.value * cap.value) within cutoff_frequency

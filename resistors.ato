@@ -7,6 +7,7 @@ component Resistor:
     designator_prefix = "R"
     mpn = "generic_resistor"
     type = "resistor"
+    value: resistance
 
     # Equations
     # R = V/I
