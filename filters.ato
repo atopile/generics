@@ -25,6 +25,12 @@ module LowPassFilter:
     output.gnd ~ capacitor.2
     input.gnd ~ output.gnd
 
+    # Default values
+    cutoff_frequency = 1kHz +/- 20%
+    capacitor.value = 100nF +/- 10%
+
+    assert 1 / (2 * 3.14 * resistor.value * capacitor.value) within cutoff_frequency
+
 
 module LowPassPiFilter:
     C1 = new CapacitorElectrolytic

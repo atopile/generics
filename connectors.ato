@@ -1,17 +1,71 @@
-import WJ15EDGRC_3_81_2P from "elec/src/WJ15EDGRC_3_81_2P.ato"
-
-component Header2Pin:
+component Connector2Pin:
     signal p1
     signal p2
 
-component PluggableHeader2Pin from _WJ15EDGRC_3_81_2P:
+component Connector3Pin:
     signal p1
     signal p2
+    signal p3
 
-component _WJ15EDGRC_3_81_2P:
-    # component WJ15EDGRC-3.81-2P
-    footprint = "CONN-TH_2P-P3.81_WJ15EDGRC-3.81-2P"
-    lcsc_id = "C8387"
-    # pins
-    signal p1 ~ pin 1
-    signal p2 ~ pin 2
+component Connector4Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+
+component Connector5Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+    signal p5
+
+component Connector6Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+    signal p5
+    signal p6
+
+component Connector7Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+    signal p5
+    signal p6
+    signal p7
+
+component Connector8Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+    signal p5
+    signal p6
+    signal p7
+    signal p8
+
+component Connector9Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+    signal p5
+    signal p6
+    signal p7
+    signal p8
+    signal p9
+
+component Connector10Pin:
+    signal p1
+    signal p2
+    signal p3
+    signal p4
+    signal p5
+    signal p6
+    signal p7
+    signal p8
+    signal p9
+    signal p10
