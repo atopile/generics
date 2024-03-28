@@ -40,7 +40,7 @@ module HalfBridge:
     power.vcc ~ nfet_high.drain
     output.io ~ nfet_high.source
     output.io ~ nfet_low.drain
-    power.gnd ~ shunt.2; shunt.1 ~ nfet_high.source
+    power.gnd ~ shunt.2; shunt.1 ~ nfet_low.source
 
     # Connect the gates
     gate_high.io ~ nfet_high.gate
