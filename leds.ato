@@ -2,8 +2,8 @@ import Resistor from "resistors.ato"
 import Power from "interfaces.ato"
 
 component LED:
-    signal anode ~ pin 2
-    signal cathode ~ pin 1
+    signal anode
+    signal cathode
     designator_prefix = "LED"
     # current = 0 to 20mA
 
