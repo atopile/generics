@@ -2,7 +2,7 @@ import Power from "interfaces.ato"
 import Pair from "interfaces.ato"
 import DiffPair from "interfaces.ato"
 import Load from "interfaces.ato"
-import Resistor from "interfaces.ato"
+import Resistor from "resistors.ato"
 import Diode from "diodes.ato"
 
 component NFET:
