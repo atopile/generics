@@ -1,10 +1,10 @@
-component Transistor_npn:
+component NPN:
     signal base ~ pin 1
     signal collector ~ pin 2
     signal emitter ~ pin 3
     designator_prefix = "Q"
 
-component Transistor_pnp:
+component PNP:
     signal base
     signal collector
     signal emitter
