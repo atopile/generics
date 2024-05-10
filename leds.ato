@@ -44,6 +44,7 @@ module LEDIndicatorGreen from LEDIndicator:
 
 module LEDIndicatorBlue from LEDIndicator:
     led -> _KT_0603B
+    v_in = 3.5V +/- 10%
 
     #Assuming 3.3v input, 2.9V forward voltage, 5mA current
     # resistor.value = 82ohms +/- 20%
@@ -55,8 +56,8 @@ component _KT_0603B from LED:
     v_f = 2.9V
     i_max = 20mA
     # pins
-    signal cathode ~ pin 1
-    signal anode ~ pin 2
+    cathode ~ pin 1
+    anode ~ pin 2
 
 component _KT_0603G from LED:
     # component 0603 Green 509-620mcd
@@ -65,8 +66,8 @@ component _KT_0603G from LED:
     v_f = 2.75V
     i_max = 20mA
     # pins
-    signal anode ~ pin 2
-    signal cathode ~ pin 1
+    anode ~ pin 2
+    cathode ~ pin 1
 
 component _KT_0603R from LED:
     # component KT-0603R
@@ -75,6 +76,6 @@ component _KT_0603R from LED:
     v_f = 2V
     i_max = 20mA
     # pins
-    signal cathode ~ pin 1
-    signal anode ~ pin 2
+    cathode ~ pin 1
+    anode ~ pin 2
 
