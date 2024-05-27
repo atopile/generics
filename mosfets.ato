@@ -5,6 +5,7 @@ import Load from "interfaces.ato"
 import Resistor from "resistors.ato"
 import Diode from "diodes.ato"
 
+
 component NFET:
     signal gate
     signal drain
@@ -13,6 +14,12 @@ component NFET:
     mpn = "generic_mosfet"
     type = "mosfet"
     polarity = "N Channel"
+
+    gate_charge: charge
+    rated_current: current
+    rated_voltage: voltage
+    on_resistance: resistance
+
 
 component PFET:
     signal gate
@@ -23,33 +30,18 @@ component PFET:
     type = "mosfet"
     polarity = "P Channel"
 
+
 module HalfBridge:
     power = new Power
     gate_high = new Pair
     gate_low = new Pair
-    shunt_output = new DiffPair
     output = new Pair
 
-    # this doesnt work until we have replace with instance.
-    # Components
-    nfet_high = new NFET
-    nfet_low = new NFET
-    shunt = new Resistor
+    gate_charge: charge
+    rated_current: current
+    rated_voltage: voltage
+    on_resistance: resistance
 
-    # Connect power
-    power.vcc ~ nfet_high.drain
-    output.io ~ nfet_high.source
-    output.io ~ nfet_low.drain
-    power.gnd ~ shunt.2; shunt.1 ~ nfet_low.source
-
-    # Connect the gates
-    gate_high.io ~ nfet_high.gate
-    gate_low.io ~ nfet_low.gate
-
-    # Connect the gnds
-    output.gnd ~ power.gnd
-    gate_high.gnd ~ power.gnd
-    gate_low.gnd ~ power.gnd
 
 module LowSideSwitch:
     fet = new Mosfet_nchannel
@@ -72,6 +64,7 @@ module LowSideSwitch:
 
     # source to ground
     fet.source ~ power.gnd
+
 
 import NTTFS4C25NTWG from "elec/src/NTTFS4C25NTWG.ato"
 module LowSideSwitch30V5A from LowSideSwitch:
