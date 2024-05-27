@@ -2,6 +2,9 @@ interface Power:
     signal vcc
     signal gnd
 
+    voltage: voltage
+
+
 interface FloatPower:
     signal v_pos
     signal v_neg
