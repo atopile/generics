@@ -4,16 +4,12 @@ import Power from "interfaces.ato"
 import Pair from "interfaces.ato"
 
 module VDiv from _VDiv:
-    r_total: resistance
-    # ratio: None
     v_in: voltage
     v_out: voltage
     i_q: current
 
     i_q = 100uA to 10mA
 
-    # assert r_top.value / r_bottom.value within ratio
-    # assert r_top.value + r_bottom.value within r_total
     assert v_in * r_bottom.value / (r_top.value + r_bottom.value) within v_out
     assert v_in / (r_bottom.value + r_top.value) within i_q
 
