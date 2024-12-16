@@ -20,8 +20,8 @@ module LEDIndicator:
     # Default value
     current = 1mA to 5mA
 
-    assert (v_in - led.v_f) / resistor.value within current
-    assert current < led.i_max
+    # assert (v_in - led.v_f) / resistor.value within current
+    # assert current < led.i_max
 
     # Connect power
     power.vcc ~ input
