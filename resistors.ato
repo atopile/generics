@@ -1,17 +1,9 @@
-import Power from "interfaces.ato"
-import I2C from "interfaces.ato"
+from "interfaces.ato" import Power, I2C
+
 
 component Resistor:
-    signal p1 ~ pin 1
-    signal p2 ~ pin 2
-    designator_prefix = "R"
-    mpn = "generic_resistor"
-    type = "resistor"
-    value: resistance
+    # See https://github.com/atopile/atopile/issues/913
 
-    # Equations
-    # R = V/I
-    # R = V^2/P
 
 module I2CPullup:
     r_sda = new Resistor

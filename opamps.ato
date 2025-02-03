@@ -1,3 +1,6 @@
+from "interfaces.ato" import Power
+
+
 component Opamp:
     power = new Power
     signal inverting
@@ -5,7 +8,7 @@ component Opamp:
     signal output
     designator_prefix = "U"
 
-import Power from "interfaces.ato"
+
 module VoltageFollower:
     power = new Power
     opamp = new Opamp
@@ -19,7 +22,6 @@ module VoltageFollower:
     opamp.inverting ~ opamp.output
     output ~ opamp.output
 
-# import vdiv from "StandardCircuits.ato"
 
 module Amplifier:
     power = new Power
@@ -42,6 +44,7 @@ module Amplifier:
     output ~ vdiv.gnd
 
     inverting ~ power.gnd
+
 
 # Inverting Amplifier: Amplifies and inverts the input signal.
 # The gain is determined by the resistor values.
@@ -74,6 +77,7 @@ module SummingAmplifier:
     output ~ opamp.output
     opamp.non_inverting ~ power.gnd
 
+
 module DifferentialAmplifier:
     power = new Power
     opamp = new Opamp
@@ -88,6 +92,7 @@ module DifferentialAmplifier:
     input_negative ~ opamp.inverting
     output ~ opamp.output
 
+
 module Integrator:
     power = new Power
     opamp = new Opamp
@@ -100,6 +105,7 @@ module Integrator:
     input ~ opamp.inverting
     output ~ opamp.output
     # Note: Needs a capacitor between inverting and output for integration
+
 
 module Differentiator:
     power = new Power
@@ -114,6 +120,7 @@ module Differentiator:
     output ~ opamp.output
     # Note: Needs a capacitor at the input for differentiation
 
+
 module Comparator:
     power = new Power
     opamp = new Opamp
@@ -127,6 +134,7 @@ module Comparator:
     input_positive ~ opamp.non_inverting
     input_negative ~ opamp.inverting
     output ~ opamp.output
+
 
 module InstrumentationAmplifier:
     power = new Power
@@ -147,6 +155,7 @@ module InstrumentationAmplifier:
     opamp1.output ~ opamp3.inverting
     opamp2.output ~ opamp3.non_inverting
     output ~ opamp3.output
+
 
 module ActiveFilter:
     power = new Power
