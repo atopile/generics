@@ -1,9 +1,12 @@
-from "interfaces.ato" import Pair, Power
+import ElectricSignal
+
+from "interfaces.ato" import Power
 from "resistors.ato" import Resistor
+
 
 module NoButton:
     """
-    Its a little confusing how this works, but the idea is that you might optionally want a button in your design. 
+    Its a little confusing how this works, but the idea is that you might optionally want a button in your design.
     To achieve this with our current compiler, we need an empty module 'NoButon' (Normally Open) that can be
     replaced using the '->' operator with another module that has a button. FOr example the 'ButtonSKRPACE010'.
 
@@ -24,6 +27,7 @@ module NoButton:
     signal in
     signal out
 
+
 component _ButtonSKRPACE010:
     signal in ~ pin 1
     in ~ pin 2
@@ -32,10 +36,12 @@ component _ButtonSKRPACE010:
     footprint = "KEY-SMD_4P-L4.2-W3.2-P2.20-LS4.6"
     mpn = "C139797"
 
+
 module ButtonSKRPACE010 from NoButton:
     btn = new _ButtonSKRPACE010
     in ~ btn.in
     out ~ btn.out
+
 
 component _ButtonSKTDLDE010:
     in ~ pin 1
@@ -45,6 +51,7 @@ component _ButtonSKTDLDE010:
 
     footprint = "KEY-SMD_SKTDLDE010"
     mpn = "C115365"
+
 
 module ButtonSKTDLDE010 from NoButton:
     """
@@ -56,28 +63,27 @@ module ButtonSKTDLDE010 from NoButton:
 
 module ButtonPullup:
     btn = new NoButton
-    signal out
-    output = new Pair
+    out = new ElectricSignal
     power = new Power
     pullup = new Resistor
 
     signal out # depricated
 
-    output.io ~ out
-    output.gnd ~ power.gnd
+    out.line ~ out
+    out.reference ~ power
     pullup.value = 10kohms +/- 20%
     pullup.package = "0402"
 
     power.vcc ~ pullup.p1; pullup.p2 ~ btn.in; btn.out ~ power.gnd
-    out ~ btn.in
+    btn.in ~ out.line
 
-    output.io ~ out
-    output.gnd ~ power.gnd
+    out.reference ~ power
+
 
 module ButtonPulldown:
     btn = new NoButton
     signal out
-    output = new Pair
+    out = new ElectricSignal
     power = new Power
     pulldown = new Resistor
     pulldown.value = 10kohms +/- 20%
@@ -86,8 +92,9 @@ module ButtonPulldown:
     power.gnd ~ pulldown.p1; pulldown.p2 ~ btn.in; btn.out ~ power.vcc
     out ~ btn.in
 
-    output.io ~ out
-    output.gnd ~ power.gnd
+    out.line ~ out
+    out.reference ~ power
+
 
 module ButtonPullup90Degree from ButtonPullup:
     btn -> _1TS003B_1400_3500A

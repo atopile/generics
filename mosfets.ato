@@ -1,34 +1,18 @@
-import Power from "interfaces.ato"
-import Pair from "interfaces.ato"
-import DiffPair from "interfaces.ato"
-import Load from "interfaces.ato"
-import Resistor from "resistors.ato"
-import Diode from "diodes.ato"
+import ElectricSignal
 
-component NFET:
-    signal gate
-    signal drain
-    signal source
-    designator_prefix = "Q"
-    mpn = "generic_mosfet"
-    type = "mosfet"
-    polarity = "N Channel"
+from "interfaces.ato" import Power, DiffPair, Load
+from "resistors.ato" import Resistor
+from "diodes.ato" import Diode
+from "elec/src/NTTFS4C25NTWG.ato" import NTTFS4C25NTWG
 
-component PFET:
-    signal gate
-    signal drain
-    signal source
-    designator_prefix = "Q"
-    mpn = "generic_mosfet"
-    type = "mosfet"
-    polarity = "P Channel"
+
 
 module HalfBridge:
     power = new Power
-    gate_high = new Pair
-    gate_low = new Pair
+    gate_high = new ElectricSignal
+    gate_low = new ElectricSignal
     shunt_output = new DiffPair
-    output = new Pair
+    output = new ElectricSignal
 
     # this doesnt work until we have replace with instance.
     # Components
@@ -38,18 +22,19 @@ module HalfBridge:
 
     # Connect power
     power.vcc ~ nfet_high.drain
-    output.io ~ nfet_high.source
-    output.io ~ nfet_low.drain
+    output.line ~ nfet_high.source
+    output.line ~ nfet_low.drain
     power.gnd ~ shunt.2; shunt.1 ~ nfet_low.source
 
     # Connect the gates
-    gate_high.io ~ nfet_high.gate
-    gate_low.io ~ nfet_low.gate
+    gate_high.line ~ nfet_high.gate
+    gate_low.line ~ nfet_low.gate
 
     # Connect the gnds
-    output.gnd ~ power.gnd
-    gate_high.gnd ~ power.gnd
-    gate_low.gnd ~ power.gnd
+    output.reference ~ power
+    gate_high.reference ~ power
+    gate_low.reference ~ power
+
 
 module LowSideSwitch:
     fet = new Mosfet_nchannel
@@ -60,11 +45,11 @@ module LowSideSwitch:
     power = new Power
     load = new Load
 
-    input = new Pair
+    input = new ElectricSignal
 
     # connect up circuit
-    input.io ~ gate_resistor.p1; gate_resistor.p2 ~ fet.gate
-    input.gnd ~ power.gnd
+    input.line ~ gate_resistor.p1; gate_resistor.p2 ~ fet.gate
+    input.reference ~ power
 
     # load and diode between power and fet
     power.vcc ~ freewheel_diode.cathode; freewheel_diode.anode ~ fet.drain
@@ -73,6 +58,6 @@ module LowSideSwitch:
     # source to ground
     fet.source ~ power.gnd
 
-import NTTFS4C25NTWG from "elec/src/NTTFS4C25NTWG.ato"
+
 module LowSideSwitch30V5A from LowSideSwitch:
     fet -> NTTFS4C25NTWG

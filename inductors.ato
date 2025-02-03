@@ -1,6 +1,2 @@
 component Inductor:
-    signal p1 ~ pin 1
-    signal p2 ~ pin 2
-    designator_prefix = "L"
-    mpn = "generic_inductor"
-    type = "inductor"
+    pass  # See https://github.com/atopile/atopile/issues/913

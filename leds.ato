@@ -1,18 +1,18 @@
-import Resistor from "resistors.ato"
-import Power from "interfaces.ato"
+import LED
 
-component LED:
-    signal anode
-    signal cathode
-    designator_prefix = "LED"
-    # current = 0 to 20mA
+from "resistors.ato" import Resistor
+from "interfaces.ato" import Power
 
+
+# FIXME: consolidate w/ PowderedLED
 module LEDIndicator:
     power = new Power
     signal input
     signal gnd
+
     resistor = new Resistor
     led = new LED
+
     resistor.package = "0402"
     current: current
     v_in: voltage
@@ -30,11 +30,13 @@ module LEDIndicator:
     # Connect up
     input ~ led.anode; led.cathode ~ resistor.p1; resistor.p2 ~ gnd
 
+
 module LEDIndicatorRed from LEDIndicator:
     led -> _KT_0603R
 
     #Assuming 3.3v input, 2V forward voltage, 5mA current
     # resistor.value = 270ohms +/- 20%
+
 
 module LEDIndicatorGreen from LEDIndicator:
     led -> _KT_0603G
@@ -42,12 +44,14 @@ module LEDIndicatorGreen from LEDIndicator:
     #Assuming 3.3v input, 2.75V forward voltage, 5mA current
     # resistor.value = 110ohms +/- 20%
 
+
 module LEDIndicatorBlue from LEDIndicator:
     led -> _KT_0603B
     v_in = 3.5V +/- 10%
 
     #Assuming 3.3v input, 2.9V forward voltage, 5mA current
     # resistor.value = 82ohms +/- 20%
+
 
 component _KT_0603B from LED:
     # component Blue light 0603
@@ -59,6 +63,7 @@ component _KT_0603B from LED:
     cathode ~ pin 1
     anode ~ pin 2
 
+
 component _KT_0603G from LED:
     # component 0603 Green 509-620mcd
     footprint = "LED0603-RD"
@@ -69,6 +74,7 @@ component _KT_0603G from LED:
     anode ~ pin 2
     cathode ~ pin 1
 
+
 component _KT_0603R from LED:
     # component KT-0603R
     footprint = "LED0603-RD"
@@ -78,4 +84,3 @@ component _KT_0603R from LED:
     # pins
     cathode ~ pin 1
     anode ~ pin 2
-
