@@ -4,3 +4,5 @@ component Inductor:
     designator_prefix = "L"
     mpn = "generic_inductor"
     type = "inductor"
+    value: inductance
+    package: string
