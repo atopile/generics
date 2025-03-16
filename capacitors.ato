@@ -1,4 +1,4 @@
-import Power from "generics/interfaces.ato"
+from "interfaces.ato" import Power
 
 component Capacitor:
     signal p1 ~ pin 1
@@ -6,6 +6,9 @@ component Capacitor:
     designator_prefix = "C"
     mpn = "generic_capacitor"
     type = "capacitor"
+    value: capacitance
+    voltage: voltage
+    package: string
 
     power = new Power
     power.vcc ~ p1
