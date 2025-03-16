@@ -2,11 +2,16 @@ import Capacitor from "capacitors.ato"
 import Pair from "interfaces.ato"
 
 component Crystal:
+    """Generic crystal oscillator."""
+    load_capacitance: capacitance
+    frequency: frequency
+
     signal xin
     signal xout
     signal gnd
 
 module Oscillator:
+    """Generic oscillator."""
     xin = new Pair
     xout = new Pair
 
@@ -19,6 +24,8 @@ module Oscillator:
 
     load_cap_1.package = "0402"
     load_cap_2.package = "0402"
+    load_cap_1.value = crystal.load_capacitance
+    load_cap_2.value = crystal.load_capacitance
 
     xin.io ~ crystal.xin
     xout.io ~ crystal.xout
