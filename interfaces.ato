@@ -157,3 +157,19 @@ interface QEP:
     signal b
     signal z
     signal gnd
+
+interface RMII:
+    signal tx_ctl
+    signal tx_clk
+    signal tx_0
+    signal tx_1
+
+    signal rx_ctl
+    signal rx_clk
+    signal rx_0
+    signal rx_1
+
+    signal mdc
+    signal mdio
+    signal n_int
+
